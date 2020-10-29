@@ -20,11 +20,32 @@ class Pokedex extends React.Component {
     });
   }
 
+  handleInput = (e) => {
+    this.setState({ searchInput: e.target.value });
+    axios
+      .get(`/api/pokemon?search=${e.target.value}`)
+      .then((res) => {
+        this.setState({ displayPokemon: res.data });
+      })
+      .catch((err) => console.log(err));
+  };
+
   render() {
-    const mappedPokemon = this.state.displayPokemon.map((pokemon) => (
-      <DexPokemon key={pokemon.id} pokemon={pokemon} addToTeam={this.props.addToTeam}/>
+    let mappedPokemon = [];
+    mappedPokemon = this.state.displayPokemon.map((pokemon) => (
+      <DexPokemon
+        key={pokemon.id}
+        pokemon={pokemon}
+        addToTeam={this.props.addToTeam}
+      />
     ));
-    return <ul className='dex-pokemon'>{mappedPokemon}</ul>;
+    // console.log(mappedPokemon);
+    return (
+      <div>
+        <input value={this.state.searchInput} onChange={this.handleInput} />
+        <ul className="list">{mappedPokemon}</ul>
+      </div>
+    );
   }
 }
 

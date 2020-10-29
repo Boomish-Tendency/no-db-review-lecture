@@ -11,7 +11,7 @@ const Team = (props) => {
       index={index}
     />
   ));
-  return <ul>{pokemonArray}</ul>;
+  return <ul className='list'>{pokemonArray}</ul>;
 };
 
 export default Team;

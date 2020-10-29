@@ -21,18 +21,17 @@ class TeamPokemon extends Component {
   render() {
     const { pokemon } = this.props;
     return (
-      <li>
-        <h1>
-          {pokemon.name.english}{" "}
-          <span
-            onClick={(e) => {
-              e.stopPropagation();
-              this.props.removeFromTeam(this.props.index);
-            }}
-          >
-            {" X "}
-          </span>
-        </h1>
+      <li className="pokemon">
+        <p
+          className="x-button"
+          onClick={(e) => {
+            e.stopPropagation();
+            this.props.removeFromTeam(this.props.index);
+          }}
+        >
+          {" X "}
+        </p>
+        <h1>{pokemon.name.english} </h1>
 
         {this.state.toggleEdit ? (
           <input

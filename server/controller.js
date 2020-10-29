@@ -14,8 +14,9 @@ module.exports = {
         //# Pikachu will be found if we search pikachu
         //# pikachu will be found if we search PiKaCHU
       );
+      // console.log(filteredPokemon);
       for (let i = 0; i < 25; i++) {
-        if (filteredPokemon[i] !== null) {
+        if (filteredPokemon[i]) {
           resArray.push(filteredPokemon[i]);
         }
       }
@@ -24,6 +25,7 @@ module.exports = {
         resArray.push(pokedex[i]);
       }
     }
+    // console.log(resArray);
     return res.status(200).send(resArray);
   },
   getOnePokemon: (req, res) => {
@@ -41,7 +43,7 @@ module.exports = {
   },
   addToTeam: (req, res) => {
     const { id } = req.params;
-    const foundPokemon = pokedex.find((pokemon) => pokemon.id === +id);
+    const foundPokemon = { ...pokedex.find((pokemon) => pokemon.id === +id) };
 
     foundPokemon.nickname = "";
 

@@ -3,6 +3,7 @@ import React from "react";
 const DexPokemon = (props) => {
   return (
     <li
+      className="pokemon"
       onClick={() => {
         props.addToTeam(props.pokemon.id);
       }}
