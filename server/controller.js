@@ -1,5 +1,5 @@
-const pokedex = require("./pokemon.json");
-let team = [];
+  const pokedex = require("./pokemon.json");
+let myHouse = [];
 
 module.exports = {
   getPokemon: (req, res) => {
